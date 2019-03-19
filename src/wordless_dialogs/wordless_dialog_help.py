@@ -34,6 +34,11 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
                              width = 400,
                              height = 250,
                              no_button = True)
+        elif platform.system() == 'Linux':
+            super().__init__(main, main.tr('Citing'),
+                             width = 400,
+                             height = 210,
+                             no_button = True)
 
         self.label_citing = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -711,9 +716,14 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
 
 class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('About Wordless'),
-                         width = 420,
-                         height = 200)
+        if platform.system() in ['Windows', 'Darwin']:
+            super().__init__(main, main.tr('About Wordless'),
+                             width = 420,
+                             height = 200)
+        elif platform.system() == 'Linux':
+            super().__init__(main, main.tr('About Wordless'),
+                             width = 450,
+                             height = 200)
 
         label_about_icon = QLabel('', self)
 
